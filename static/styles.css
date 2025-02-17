@@ -1,7 +1,8 @@
 /* styles.css */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #121212;  /* Dark background */
+    color: #e0e0e0;  /* Light text for better readability */
     margin: 0;
     padding: 0;
     text-align: center;
@@ -10,16 +11,17 @@ body {
 .container {
     max-width: 800px;
     margin: 20px auto;
-    background: white;
+    background: #1e1e1e;  /* Slightly lighter dark background */
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
+    color: #e0e0e0;  /* Light text color */
 }
 
 h1 {
-    color: #333;
-    font-size: 1.8em;
+    font-size: 2em;
     margin-bottom: 20px;
+    color: #ff4081;  /* Vibrant pink for heading */
 }
 
 form {
@@ -34,19 +36,21 @@ input, button {
     padding: 12px;
     font-size: 16px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #444;  /* Dark border */
+    background-color: #333;  /* Dark background for inputs */
+    color: #fff;  /* White text */
     width: 100%;
 }
 
 button {
-    background-color: #007BFF;
+    background-color: #ff4081;  /* Vibrant pink for the button */
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #f50057;  /* Lighter pink when hovered */
 }
 
 table {
@@ -57,24 +61,25 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #444;  /* Dark border */
     padding: 12px;
     text-align: left;
+    color: #e0e0e0;  /* Light text color */
 }
 
 th {
-    background-color: #007BFF;
+    background-color: #6200ea;  /* Vibrant purple for table header */
     color: white;
 }
 
 td[contenteditable="true"] {
-    background-color: #f9f9f9;
+    background-color: #333;  /* Dark background for editable cells */
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
 td[contenteditable="true"]:hover {
-    background-color: #f1f1f1;
+    background-color: #444;  /* Slightly lighter dark when hovered */
 }
 
 canvas {
@@ -85,7 +90,7 @@ canvas {
 
 /* Buttons styling */
 button:disabled {
-    background-color: #ccc;
+    background-color: #666;  /* Disabled button with gray background */
     cursor: not-allowed;
 }
 

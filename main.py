@@ -17,7 +17,11 @@ def calculate_total_monthly_expenses(data):
     
     # Property Taxes and Home Insurance come from the form, no need for defaults
     property_taxes = float(data["property_taxes"]) / 12  # Monthly property taxes
-    utilities = sum(float(data.get(k, 0)) for k in ["electricity", "water", "gas", "internet"])
+    electricity = float(data.get("electricity", 250.0))
+    water = float(data.get("water", 50.0))
+    gas = float(data.get("gas", 50.0))
+    internet = float(data.get("internet", 50.0))
+    utilities = electricity + water + gas + internet
     hoa_fees = float(data.get("hoa_fees", 100.0))  # Default HOA fees if not provided
     home_insurance = float(data["home_insurance"]) / 12  # Monthly home insurance
     maintenance = house_price * 0.01 / 12  # Maintenance (1% of house price annually)
@@ -30,10 +34,10 @@ def calculate_total_monthly_expenses(data):
         "home_insurance": round(home_insurance, 2),
         "maintenance": round(maintenance, 2),
         "total_cost": round(mortgage + property_taxes + utilities + hoa_fees + home_insurance + maintenance, 2),
-        "electricity": round(float(data.get("electricity", 250.0)), 2),
-        "water": round(float(data.get("water", 50.0)), 2),
-        "gas": round(float(data.get("gas", 50.0)), 2),
-        "internet": round(float(data.get("internet", 50.0)), 2)
+        "electricity": round(electricity, 2),
+        "water": round(water, 2),
+        "gas": round(gas, 2),
+        "internet": round(internet, 2)
     }
 
 @app.route('/')
