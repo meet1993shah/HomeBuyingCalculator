@@ -1,4 +1,4 @@
-<!-- results.html -->
+<!-- Updated results.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,16 +14,23 @@
         <table id="costTable">
             <tr><th>Category</th><th>Amount ($)</th></tr>
             <tr><td>Mortgage</td><td id="mortgage"></td></tr>
-            <tr><td>Electricity</td><td contenteditable="true" id="electricity"></td></tr>
-            <tr><td>Water</td><td contenteditable="true" id="water"></td></tr>
-            <tr><td>Gas</td><td contenteditable="true" id="gas"></td></tr>
-            <tr><td>Internet</td><td contenteditable="true" id="internet"></td></tr>
+            <tr><td>Utilities</td><td id="utilities"></td></tr>
             <tr><td>Annual Property Taxes</td><td contenteditable="true" id="property_taxes"></td></tr>
             <tr><td>HOA Fees</td><td contenteditable="true" id="hoa_fees"></td></tr>
             <tr><td>Annual Home Insurance</td><td contenteditable="true" id="home_insurance"></td></tr>
             <tr><td>Annual Maintenance</td><td id="maintenance"></td></tr>
             <tr><th>Total Monthly Cost</th><th id="total_cost"></th></tr>
         </table>
+
+        <h2>Utilities Breakdown</h2>
+        <table id="utilitiesTable">
+            <tr><th>Utility</th><th>Amount ($)</th></tr>
+            <tr><td>Electricity</td><td contenteditable="true" id="electricity"></td></tr>
+            <tr><td>Water</td><td contenteditable="true" id="water"></td></tr>
+            <tr><td>Gas</td><td contenteditable="true" id="gas"></td></tr>
+            <tr><td>Internet</td><td contenteditable="true" id="internet"></td></tr>
+        </table>
+        
         <button id="recalculate">Recalculate</button>
         <button onclick="window.location.href='/'">Back</button>
         <canvas id="costChart"></canvas>

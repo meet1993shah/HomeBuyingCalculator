@@ -1,12 +1,13 @@
+// Updated script.js
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById("costForm");
+    const recalculateBtn = document.getElementById("recalculate");
     
     if (form) {
         form.addEventListener("submit", function(event) {
             event.preventDefault();
             
             const formData = new FormData(form);
-
             fetch("/calculate", {
                 method: "POST",
                 body: formData
@@ -18,41 +19,40 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    if (window.location.pathname === "/results") {
-        fetchResults();
-    }
-
     function fetchResults() {
         fetch("/results", {
-            headers: { "X-Requested-With": "XMLHttpRequest" }  // Request JSON format
+            headers: { "X-Requested-With": "XMLHttpRequest" }
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Failed to fetch data from server.");
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
             populateTable(data);
+            populateUtilitiesTable(data);
             updateChart(data);
         })
         .catch(error => console.error("Error fetching results:", error));
     }
 
     function populateTable(data) {
-        const ids = ["mortgage", "electricity", "water", "gas", "internet", "property_taxes", "hoa_fees", "home_insurance", "maintenance", "total_cost"];
-        ids.forEach(id => {
-            const element = document.getElementById(id);
-            if (element) {
-                element.textContent = data[id];
-            }
-        });
+        document.getElementById("mortgage").textContent = data.mortgage;
+        document.getElementById("property_taxes").textContent = data.property_taxes;
+        document.getElementById("hoa_fees").textContent = data.hoa_fees;
+        document.getElementById("home_insurance").textContent = data.home_insurance;
+        document.getElementById("maintenance").textContent = data.maintenance;
+        document.getElementById("utilities").textContent = data.utilities;
+        document.getElementById("total_cost").textContent = data.total_cost;
+    }
+
+    function populateUtilitiesTable(data) {
+        document.getElementById("electricity").textContent = data.electricity;
+        document.getElementById("water").textContent = data.water;
+        document.getElementById("gas").textContent = data.gas;
+        document.getElementById("internet").textContent = data.internet;
     }
 
     function updateChart(data) {
         const ctx = document.getElementById("costChart");
         if (!ctx) return;
-
+        
         new Chart(ctx.getContext("2d"), {
             type: "pie",
             data: {
@@ -64,4 +64,32 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+
+    if (recalculateBtn) {
+        recalculateBtn.addEventListener("click", function() {
+            const updatedData = {
+                electricity: parseFloat(document.getElementById("electricity").textContent),
+                water: parseFloat(document.getElementById("water").textContent),
+                gas: parseFloat(document.getElementById("gas").textContent),
+                internet: parseFloat(document.getElementById("internet").textContent),
+                property_taxes: parseFloat(document.getElementById("property_taxes").textContent),
+                hoa_fees: parseFloat(document.getElementById("hoa_fees").textContent),
+                home_insurance: parseFloat(document.getElementById("home_insurance").textContent)
+            };
+            
+            fetch("/recalculate", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(updatedData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                populateTable(data);
+                populateUtilitiesTable(data);
+                updateChart(data);
+            });
+        });
+    }
+
+    fetchResults();
 });
