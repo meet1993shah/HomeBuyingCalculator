@@ -1,0 +1,31 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Cost Calculator</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>House Cost Calculator</h1>
+        <form id="costForm" method="post" action="/calculate">
+            <label for="house_price">House Price ($):</label>
+            <input type="number" id="house_price" name="house_price" required>
+
+            <label for="down_payment">Down Payment (%):</label>
+            <input type="number" id="down_payment" name="down_payment" required>
+
+            <label for="loan_term">Loan Term (years):</label>
+            <input type="number" id="loan_term" name="loan_term" required>
+
+            <label for="interest_rate">Annual Interest Rate (%):</label>
+            <input type="number" step="0.01" id="interest_rate" name="interest_rate" required>
+
+            <button type="submit">Calculate</button>
+        </form>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
