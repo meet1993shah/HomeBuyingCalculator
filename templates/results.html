@@ -1,4 +1,4 @@
-<!-- results.html -->
+<!-- Updated results.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,28 +11,35 @@
 <body>
     <div class="container">
         <h1>Monthly Cost Breakdown</h1>
-        <table id="costTable">
-            <tr><th>Category</th><th>Amount ($)</th></tr>
-            <tr><td>Mortgage</td><td id="mortgage">{{ results.mortgage }}</td></tr>
-            <tr><td>Utilities</td><td id="utilities">{{ results.utilities }}</td></tr>
-            <tr><td>Property Taxes</td><td id="property_taxes">{{ results.property_taxes }}</td></tr>  <!-- non-editable -->
-            <tr><td>HOA Fees</td><td id="hoa_fees">{{ results.hoa_fees }}</td></tr>
-            <tr><td>Home Insurance</td><td id="home_insurance">{{ results.home_insurance }}</td></tr>  <!-- non-editable -->
-            <tr><td>Maintenance</td><td id="maintenance">{{ results.maintenance }}</td></tr>
-            <tr><th>Total Monthly Cost</th><th id="total_cost">{{ results.total_cost }}</th></tr>
-        </table>
 
-        <h2>Utilities Breakdown</h2>
-        <table id="utilitiesTable">
-            <tr><th>Utility</th><th>Amount ($)</th></tr>
-            <tr><td>Electricity</td><td contenteditable="true" id="electricity">{{ results.electricity }}</td></tr>
-            <tr><td>Water</td><td contenteditable="true" id="water">{{ results.water }}</td></tr>
-            <tr><td>Gas</td><td contenteditable="true" id="gas">{{ results.gas }}</td></tr>
-            <tr><td>Internet</td><td contenteditable="true" id="internet">{{ results.internet }}</td></tr>
-        </table>
+        <!-- Tables container: Side by side tables -->
+        <div class="tables-container">
+            <table id="costTable">
+                <tr><th>Category</th><th>Amount ($)</th></tr>
+                <tr><td>Mortgage</td><td id="mortgage">{{ results.mortgage }}</td></tr>
+                <tr><td>Utilities</td><td id="utilities">{{ results.utilities }}</td></tr>
+                <tr><td>Property Taxes</td><td id="property_taxes">{{ results.property_taxes }}</td></tr>  <!-- non-editable -->
+                <tr><td>HOA Fees</td><td id="hoa_fees">{{ results.hoa_fees }}</td></tr>
+                <tr><td>Home Insurance</td><td id="home_insurance">{{ results.home_insurance }}</td></tr>  <!-- non-editable -->
+                <tr><td>Maintenance</td><td id="maintenance">{{ results.maintenance }}</td></tr>
+                <tr><th>Total Monthly Cost</th><th id="total_cost">{{ results.total_cost }}</th></tr>
+            </table>
 
-        <button id="recalculate">Recalculate</button>
-        <button onclick="window.location.href='/'">Back</button>
+            <table id="utilitiesTable">
+                <tr><th>Utility</th><th>Amount ($)</th></tr>
+                <tr><td>Electricity</td><td contenteditable="true" id="electricity">{{ results.electricity }}</td></tr>
+                <tr><td>Water</td><td contenteditable="true" id="water">{{ results.water }}</td></tr>
+                <tr><td>Gas</td><td contenteditable="true" id="gas">{{ results.gas }}</td></tr>
+                <tr><td>Internet</td><td contenteditable="true" id="internet">{{ results.internet }}</td></tr>
+            </table>
+        </div>
+
+        <!-- Buttons container: Side by side buttons -->
+        <div class="buttons-container">
+            <button id="recalculate">Recalculate</button>
+            <button onclick="window.location.href='/'">Back</button>
+        </div>
+
         <canvas id="costChart"></canvas>
     </div>
     <script src="/static/results.js"></script>

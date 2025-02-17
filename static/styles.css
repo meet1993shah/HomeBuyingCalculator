@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 20px auto;
     background: white;
     padding: 20px;
@@ -18,25 +18,31 @@ body {
 
 h1 {
     color: #333;
+    font-size: 1.8em;
+    margin-bottom: 20px;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 input, button {
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    width: 100%;
 }
 
 button {
     background-color: #007BFF;
     color: white;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button:hover {
@@ -47,11 +53,13 @@ table {
     width: 100%;
     margin-top: 20px;
     border-collapse: collapse;
+    table-layout: fixed; /* Ensures uniform column width */
 }
 
 table, th, td {
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 12px;
+    text-align: left;
 }
 
 th {
@@ -62,9 +70,42 @@ th {
 td[contenteditable="true"] {
     background-color: #f9f9f9;
     cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+td[contenteditable="true"]:hover {
+    background-color: #f1f1f1;
 }
 
 canvas {
-    margin-top: 20px;
+    margin-top: 30px;
     max-width: 100%;
+    height: auto;
+}
+
+/* Buttons styling */
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Layout for tables side by side */
+.tables-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.tables-container table {
+    width: 48%;  /* Makes tables side by side with some space between them */
+}
+
+/* Layout for Recalculate and Back buttons side by side */
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+    width: 100%;
 }
