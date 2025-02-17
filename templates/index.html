@@ -12,19 +12,26 @@
         <h1>House Cost Calculator</h1>
         <form id="costForm" method="POST" action="/calculate">
             <label for="house_price">House Price ($):</label>
-            <input type="number" id="house_price" name="house_price" required>
+            <input type="number" id="house_price" name="house_price" required value="{{ session.get('form_data', {}).get('house_price', '') }}">
 
             <label for="down_payment">Down Payment (%):</label>
-            <input type="number" id="down_payment" name="down_payment" required>
+            <input type="number" id="down_payment" name="down_payment" required value="{{ session.get('form_data', {}).get('down_payment', '') }}">
 
             <label for="loan_term">Loan Term (years):</label>
-            <input type="number" id="loan_term" name="loan_term" required>
+            <input type="number" id="loan_term" name="loan_term" required value="{{ session.get('form_data', {}).get('loan_term', '') }}">
 
             <label for="interest_rate">Annual Interest Rate (%):</label>
-            <input type="number" step="0.01" id="interest_rate" name="interest_rate" required>
+            <input type="number" step="0.01" id="interest_rate" name="interest_rate" required value="{{ session.get('form_data', {}).get('interest_rate', '') }}">
+
+            <label for="property_taxes">Property Taxes ($):</label>
+            <input type="number" id="property_taxes" name="property_taxes" required value="{{ session.get('form_data', {}).get('property_taxes', '') }}">
+
+            <label for="home_insurance">Home Insurance ($):</label>
+            <input type="number" id="home_insurance" name="home_insurance" required value="{{ session.get('form_data', {}).get('home_insurance', '') }}">
 
             <button type="submit">Calculate</button>
         </form>
     </div>
+    <script src="/static/index.js"></script>
 </body>
 </html>
