@@ -38,7 +38,11 @@ def get_total_monthly_expenses(data):
         "hoa_fees": round(hoa_fees, 2),
         "home_insurance": round(home_insurance, 2),
         "maintenance": round(maintenance, 2),
-        "total_cost": round(mortgage + property_taxes + utilities + hoa_fees + home_insurance + maintenance, 2)
+        "total_cost": round(mortgage + property_taxes + utilities + hoa_fees + home_insurance + maintenance, 2),
+        "electricity": round(float(data.get("electricity", DEFAULTS["electricity"])), 2),
+        "water": round(float(data.get("water", DEFAULTS["water"])), 2),
+        "gas": round(float(data.get("gas", DEFAULTS["gas"])), 2),
+        "internet": round(float(data.get("internet", DEFAULTS["internet"])), 2)
     }
 
 @app.route('/')
@@ -60,7 +64,7 @@ def calculate():
 
     return redirect(url_for('results'))
 
-@app.route('/results')
+@app.route('/results', methods=['GET', 'POST'])
 def results():
     if "form_data" not in session:
         return redirect(url_for('index'))  # Redirect if session is missing

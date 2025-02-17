@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <h1>House Cost Calculator</h1>
-        <form id="costForm" method="post" action="/calculate">
+        <form id="costForm" method="POST" action="/calculate">
             <label for="house_price">House Price ($):</label>
             <input type="number" id="house_price" name="house_price" required>
 
@@ -26,6 +26,5 @@
             <button type="submit">Calculate</button>
         </form>
     </div>
-    <script src="/static/script.js"></script>
 </body>
 </html>
