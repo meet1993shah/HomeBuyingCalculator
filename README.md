@@ -31,8 +31,8 @@ A calculator for estimating monthly expenses after home purchase
 
 1. **Clone the Repository:** Clone the project to your local machine.
 ```bash
-git clone https://github.com/meet1993shah/InvestmentsGrowthProjector.git
-cd InvestmentsGrowthProjector
+git clone https://github.com/meet1993shah/HomeBuyingCalculator.git
+cd HomeBuyingCalculator
 ```
 
 2. **Install Dependencies:** Install the required Python packages
